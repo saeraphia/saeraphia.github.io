@@ -10,7 +10,101 @@
     <title>FindIt Portal</title>
   </head>
   <body>
-     
-     
+    <!-- A copy paste draft -->
+    <header>
+      <a href="#home" class="logo">FindIt Portal</a>
+      <i class='bx bx-menu' id="menu-icon"></i>
+      <nav class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="found list.html">Browse Item</a>
+        <a href="about us.html">About Us</a>
+        <a href="report.html">Report</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </header>
+
+    <!-- Content here -->
+<!-- ── LAYOUT ── -->
+<div class="layout">
+
+  <!-- ── FORM CARD ── -->
+  <div class="form-card">
+    <div class="card-top">
+      <h2>Item Report Form</h2>
+      <!-- Status Tabs -->
+      <div class="status-tabs" role="tablist">
+        <button class="tab active" onclick="switchTab('lost', this)" role="tab">Lost</button>
+        <button class="tab" onclick="switchTab('found', this)" role="tab">Found</button>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <form onsubmit="return handleSubmit(event)">
+
+        <!-- Where -->
+        <div class="field-row single">
+          <div class="field">
+            <label>Where?</label>
+            <div class="input-icon-wrap">
+              <input type="text" id="where">
+            </div>
+          </div>
+        </div>
+
+        <!-- When & Category -->
+        <div class="field-row" style="margin-top:18px">
+          <div class="field">
+            <label>When?</label>
+            <select id="when" required>
+              <option value=""></option>
+              <option>Today</option>
+              <option>Yesterday</option>
+              <option>The day before yesterday</option>
+            </select>
+			<div>
+				<input type="date" id="when" required>
+			</div>
+          </div>
+          <div class="field">
+            <label>Category</label>
+            <select id="category" required>
+              <option value="">Select a category</option>
+              <option>Bag / Luggage</option>
+              <option>Wallet / Purse</option>
+              <option>Phone / Electronics</option>
+              <option>Keys</option>
+              <option>Jewellery / Watch</option>
+              <option>Documents / ID</option>
+              <option>Clothing / Accessories</option>
+              <option>Toy / Stuffed Animal</option>
+              <option>Sports Equipment</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="field-row single" style="margin-top:18px">
+          <div class="field">
+            <label>Description</label>
+            <textarea placeholder="Describe your item: colour, brand, size, distinctive marks or features…"></textarea>
+          </div>
+        </div>
+
+    <!-- Add Button -->
+	<div>
+		<button class="add-btn" onclick="addItem()">Add Item</button>
+	</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="navigation">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="about us.html">About Us</a>
+        <a href="login.html">Login</a>
+      </div>
+      <p class="copywrite">© 2026 CyberDeck. All rights reserved.</p>
+    </footer>
   </body>
 </html>
