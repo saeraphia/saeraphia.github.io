@@ -55,12 +55,7 @@
         <div class="field-row" style="margin-top:18px">
           <div class="field">
             <label>When?</label>
-            <select id="when" required>
-              <option value=""></option>
-              <option>Today</option>
-              <option>Yesterday</option>
-              <option>The day before yesterday</option>
-            </select>
+            
 			<div>
 				<input type="date" id="when" required>
 			</div>
@@ -86,14 +81,16 @@
         <!-- Description -->
         <div class="field-row single" style="margin-top:18px">
           <div class="field">
-            <label>Description</label>
-            <textarea placeholder="Describe your item: colour, brand, size, distinctive marks or features…"></textarea>
+			<label>Description</label><br>
+            <textarea id="description" name="description" rows="4" cols="30"
+			placeholder="Describe the item: colour, brand, features..."></textarea>
           </div>
         </div>
+		</form>
 
     <!-- Add Button -->
 	<div>
-		<button class="add-btn" onclick="addItem()">Add Item</button>
+		<button type="submit" class="add-btn">Add Item</button>
 	</div>
 
     <!-- Footer -->
