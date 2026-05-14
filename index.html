@@ -1,19 +1,21 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="CyberDeck">
     <meta name="description" content="Lost and Found System for UiTM Sarawak KS2">
-    <link rel="stylesheet" href="C:\Users\anima\OneDrive\Documents\SEM 4\CSC264\Group Project\Code\css\style.css">
-    <script src="anim.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>FindIt Portal</title>
   </head>
   <body>
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
-      <a href="index.html" class="logo">FindIt Portal</a>
-      <i class='bx bx-menu' id="menu-icon"></i>
+        
+      <a href="index.html" class="logo">
+        <img src="../assets/images/Find_it_Portal.png" alt="FindIt Portal Logo" class="logo">
+        <span>FindIt Portal</span>
+      </a>
       <nav class="navbar">
         <a href="#home" class="active">Home</a>
         <a href="found list.html">Browse Item</a>
@@ -26,13 +28,20 @@
 
 
     <div class="hero">
-        <h1>Lost It.</h1>
-        <h1>Return It.</h1>
-        <h1>Recover It.</h1>
-        <h3>From lost to found - simple & easy.<br>
-        Reconnecting students across campus with their lost belongings.</h3>
+        <div class="hero-text">
+          <h1>Lost It.</h1>
+          <h1>Return It.</h1>
+          <h1>Recover It.</h1>
+          <h3>
+            From lost to found - simple & easy.<br>
+            Reconnecting students across campus with their lost belongings.
+          </h3>
+        </div>
+
+        <span class="hero-icon">🔍</span>
     </div>
 
+    <!-- BUTTON SECTION -->
     <div class="button-section">
         <table>
            <td><button class="lost" type="button">I lost something</button></td>
@@ -40,6 +49,7 @@
         </table>
     </div>
 
+    <!-- HOW IT WORKS -->
     <div class="how-it-works">
         <h2>How this works?</h2>
           <div class="how-box">
@@ -60,15 +70,22 @@
 
    <!-- FOOTER -->
     <footer class="footer">
-      <div class="navigation">
-        <h4>Navigation</h4>
-        <a href="index.html">Home</a>
-        <a href="found list.html">Browse Item</a>
-        <a href="report.html">Report</a>
-        <a href="about us.html">About Us</a>
-        <a href="review.html">Reviews</a>
+      <div class="footer-content">
+        <div class="navigation">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="found list.html">Browse Item</a>
+          <a href="report.html">Report</a>
+          <a href="about us.html">About Us</a>
+          <a href="review.html">Reviews</a>
+        </div>
+        <div class="footer-image">
+          <img src="../assets/images/Cyberdesk.png" alt="CyberDesk Logo">
+        </div>
       </div>
       <p class="copywrite">© 2026 CyberDeck. All rights reserved.</p>
     </footer>
+
+    <script src="../javascript/anim.js"></script>
   </body>
 </html>
