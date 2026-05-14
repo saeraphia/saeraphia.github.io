@@ -1,25 +1,29 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="CyberDeck">
     <meta name="description" content="Lost and Found System for UiTM Sarawak KS2">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="C:\Users\anima\OneDrive\Documents\SEM 4\CSC264\Group Project\Code\css\style.css">
-    <script src="anim.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>FindIt Portal</title>
   </head>
   <body>
    
+    <!-- HEADER -->
     <header>
-      <a href="index.html" class="logo">FindIt Portal</a>
-      <i class='bx bx-menu' id="menu-icon"></i>
+      <a href="index.html" class="logo">
+        <img src="../assets/images/Find_it_Portal.png" alt="FindIt Portal Logo">
+        <span></span>FindIt Portal</span>
+      </a>
       <nav class="navbar">
-        <a href="#home" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="found list.html">Browse Item</a>
         <a href="report.html">Report</a>
         <a href="about us.html">About Us</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
       </nav>
     </header>
 
@@ -29,7 +33,7 @@
   <!-- ── FORM CARD ── -->
   <div class="form-card">
     <div class="card-top">
-      <h2>Item Report Form</h2>
+      <h2>Item Report</h2>
       <!-- Status Tabs -->
       <div class="status-tabs" role="tablist">
         <button class="tab active" onclick="switchTab('lost', this)" role="tab">Lost</button>
@@ -40,31 +44,45 @@
     <div class="card-body">
       <form onsubmit="return handleSubmit(event)">
 
-        <!-- Where -->
+        <!-- WHERE -->
         <div class="field-row single">
           <div class="field">
-            <label>Where?</label>
-            <div class="input-icon-wrap">
-              <input type="text" id="where">
-            </div>
+            <label>Where</label>
+            <select id="location-type" required>
+              <option value="">Select location</option>
+              <option>Block A</option>
+              <option>Block B</option>
+              <option>Block C</option>
+              <option>Bilik Seminar Utama</option>
+              <option>Perpustakaan Tun Abdul Razak (PTAR)</option>
+              <option>Kolej Seri Pinang 1</option>
+              <option>Kolej Seri Pinang 2</option>
+              <option>Medan Selera</option>
+              <option>Other</option>
+            </select>
           </div>
         </div>
 
-        <!-- When & Category -->
+        <!-- DATE,TIME & CATEGORY -->
         <div class="field-row" style="margin-top:18px">
           <div class="field">
-            <label>When?</label>
-            
-			<div>
-				<input type="date" id="when" required>
-			</div>
+            <label>Date</label>
+            <input type="date" id="date" required>
           </div>
+
+          <div class="field">
+            <label>Time</label>
+            <input type="time" id="time" required>
+          </div>
+        </div>
+
+        <div class="field-row single" style="margin-top:18px">
           <div class="field">
             <label>Category</label>
             <select id="category" required>
               <option value="">Select a category</option>
               <option>Bag / Luggage</option>
-              <option>Wallet / Purse</option>
+              <option>Wallet / Money</option>
               <option>Phone / Electronics</option>
               <option>Keys</option>
               <option>Jewellery / Watch</option>
@@ -77,16 +95,24 @@
           </div>
         </div>
 
-        <!-- Description -->
+        <!-- DESCRIPTION -->
         <div class="field-row single" style="margin-top:18px">
           <div class="field">
 			<label>Description</label><br>
             <textarea id="description" name="description" rows="4" cols="30"
-			placeholder="Describe the item: colour, brand, features..."></textarea>
+			placeholder="Describe the item: colour, brand, features, location..."></textarea>
           </div>
         </div>
 
-        <!-- Add Button -->
+        <!-- IMAGE UPLOAD -->
+        <div class="field-row single" style="margin-top:18px">
+          <div class="field">
+            <label>Upload Image (Optional)</label>
+            <input type="file" id="item-image" name="item-image" accept="image/*">
+          </div>
+        </div>
+
+        <!-- ADD BUTTON -->
         <div class="button-row">
             <button type="submit" class="add-btn">Add Item</button>
         </div>
@@ -97,15 +123,22 @@
 
    <!-- FOOTER -->
     <footer class="footer">
-      <div class="navigation">
-        <h4>Navigation</h4>
-        <a href="index.html">Home</a>
-        <a href="found list.html">Browse Item</a>
-        <a href="report.html">Report</a>
-        <a href="about us.html">About Us</a>
-        <a href="review.html">Reviews</a>
+      <div class="footer-content">
+        <div class="navigation">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="found list.html">Browse Item</a>
+          <a href="report.html">Report</a>
+          <a href="about us.html">About Us</a>
+          <a href="review.html">Reviews</a>
+        </div>
+        <div class="footer-image">
+          <img src="../assets/images/Cyberdesk.png" alt="CyberDesk Logo">
+        </div>
       </div>
       <p class="copywrite">© 2026 CyberDeck. All rights reserved.</p>
     </footer>
+
+    <script src="../javascript/anim.js"></script>
   </body>
 </html>
