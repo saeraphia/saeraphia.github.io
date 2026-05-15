@@ -20,14 +20,25 @@ function logout() {
 
 // Check authentication for protected pages
 function checkAuthentication() {
-    const currentPage = decodeURIComponent(window.location.pathname.split('/').pop());
-    const protectedPages = ['report.html', 'found list.html'];
+    let currentPage = decodeURIComponent(window.location.pathname.split('/').pop() || '');
+    currentPage = currentPage.toLowerCase().replace(/%20/g, ' ').trim();
 
-    if (protectedPages.includes(currentPage) && !isLoggedIn()) {
+    const protectedPages = [
+        'report.html',
+        'found list.html',
+        'found%20list.html',
+        'found-list.html',
+        'foundlist.html'
+    ];
+
+    const isProtected = protectedPages.includes(currentPage) || /found.*list/.test(currentPage);
+
+    if (isProtected && !isLoggedIn()) {
         alert('Please login or sign up to access this page.');
         window.location.href = 'login.html';
         return false;
     }
+
     return true;
 }
 
@@ -41,7 +52,7 @@ function updateNavigation() {
 
     if (isLoggedIn()) {
         // Replace login/signup with logout
-        if (loginLink) loginLink.outerHTML = '<a href="#" onclick="logout()" style="cursor: pointer;">Logout</a>';
+        if (loginLink) loginLink.outerHTML = '<a href="#" class="logout-btn" onclick="logout()">Log Out</a>';
         if (signupLink) signupLink.style.display = 'none';
     }
 }
@@ -312,10 +323,13 @@ function displayReview(review) {
 
     const reviewCard = document.createElement('article');
     reviewCard.className = 'review-card dynamic-review';
+    reviewCard.dataset.reviewId = review.id;
+    reviewCard.style.position = 'relative';
 
     const stars = '⭐'.repeat(Math.floor(review.rating));
 
     reviewCard.innerHTML = `
+        <button type="button" class="delete-review-btn" aria-label="Delete review" style="position:absolute; top:12px; right:12px; border:none; background:transparent; color:#333; font-size:20px; line-height:1; cursor:pointer;">×</button>
         <h3>User Review</h3>
         <p>"${review.comment}"</p>
         <div class="review-meta">
@@ -324,15 +338,29 @@ function displayReview(review) {
         </div>
     `;
 
+    const deleteBtn = reviewCard.querySelector('.delete-review-btn');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', function() {
+            deleteReview(review.id);
+        });
+    }
+
     // Insert at the beginning of the grid
     reviewGrid.insertBefore(reviewCard, reviewGrid.firstChild);
+}
+
+function deleteReview(reviewId) {
+    const reviews = getStoredReviews();
+    const updatedReviews = reviews.filter(review => review.id !== reviewId);
+    localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
+    loadReviews();
 }
 
 // Handle report form submission
 function handleSubmit(event) {
     event.preventDefault();
 
-    const locationType = document.getElementById('location-type').value;
+    const locationType = document.getElementById('location-type').value.trim();
     const date = document.getElementById('date').value;
     const time = document.getElementById('time').value;
     const category = document.getElementById('category').value;
@@ -413,8 +441,10 @@ function handleSubmit(event) {
             saveReportData(e.target.result);
         };
         reader.readAsDataURL(imageFile);
+        return false;
     } else {
         saveReportData(null);
+        return false;
     }
     
     return false;
