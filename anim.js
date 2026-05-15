@@ -106,6 +106,7 @@ function handleSignup(event) {
     const studentId = document.getElementById('ID').value.trim();
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
@@ -130,6 +131,21 @@ function handleSignup(event) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert('Please enter a valid email address (e.g., example@domain.com).');
+        return;
+    }
+    // Phone validation
+    if (!phone) {
+        alert('You must fill in the Phone Number field.');
+        return;
+    }
+    const phoneDigits = phone.replace(/\s|\-|\(|\)/g, '');
+    const phoneRegex = /^\d+$/;
+    if (!phoneRegex.test(phoneDigits)) {
+        alert('Phone number must contain digits only.');
+        return;
+    }
+    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+        alert('Please enter a valid phone number (7 to 15 digits).');
         return;
     }
     if (!password) {
