@@ -1,3 +1,8 @@
+const menuIcon = document.querySelector("#menu-icon"); 
+const navbar = document.querySelector(".navbar");
+	menuIcon.onclick = () => { 
+	navbar.classList.toggle("active");
+};
 // Authentication functions
 function isLoggedIn() {
     return localStorage.getItem('isLoggedIn') === 'true';
